@@ -1,0 +1,32 @@
+PACKAGE
+
+package fifo_queue
+    import "/home/saito/fifo_queue"
+
+    fifo_queue.Queue is a simple FIFO queue. It supports pushing an item at
+    the end, and popping an item from the front. It is implemented as a
+    single-linked list of arrays of items.
+
+TYPES
+
+type Item interface{}
+
+type Queue struct {
+    // contains filtered or unexported fields
+}
+
+func NewQueue() *Queue
+    Create a new empty FIFO queue
+
+func (q *Queue) Len() int
+    Return the number of items in the queue
+
+func (q *Queue) PopFront() Item
+    Remove the item at the head of the queue and return it.
+
+    REQUIRES: q.Len() > 0
+
+func (q *Queue) PushBack(item Item)
+    Add an item to the end of the queue
+
+
