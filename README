@@ -1,11 +1,19 @@
-PACKAGE
+fifo_queue.Queue is a simple FIFO queue. It supports pushing an item at
+the end, and popping an item from the front. It is implemented as a
+single-linked list of arrays of items.
 
-package fifo_queue
-    import "/home/saito/fifo_queue"
+INSTALLATION
 
-    fifo_queue.Queue is a simple FIFO queue. It supports pushing an item at
-    the end, and popping an item from the front. It is implemented as a
-    single-linked list of arrays of items.
+    go get github.com/yasushi-saito/fifo_queue
+
+EXAMPLE:
+
+    import "github.com/yasushi-saito/fifo_queue"
+    q := fifo_queue.NewQueue()
+    q.PushBack("foo")
+    q.PushBack("bar")
+    item := q.PopFront().(string)  // "foo"
+    item = q.PopFront().(string)   // "bar"
 
 TYPES
 
