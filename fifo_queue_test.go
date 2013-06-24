@@ -7,7 +7,7 @@ package fifo_queue
 import "testing"
 import "math/rand"
 
-func testAssert(t *testing.T, b bool, objs ...interface{}) {
+func TestAssert(t *testing.T, b bool, objs ...interface{}) {
 	if !b {
 		t.Fatal(objs...)
 	}
@@ -15,15 +15,15 @@ func testAssert(t *testing.T, b bool, objs ...interface{}) {
 
 func TestBasic(t *testing.T) {
 	q := NewQueue()
-	testAssert(t, q.Len() == 0)
+	TestAssert(t, q.Len() == 0)
 	q.PushBack(10)
-	testAssert(t, q.Len() == 1)
-	testAssert(t, q.PopFront().(int) == 10)
-	testAssert(t, q.Len() == 0)
+	TestAssert(t, q.Len() == 1)
+	TestAssert(t, q.PopFront().(int) == 10)
+	TestAssert(t, q.Len() == 0)
 	q.PushBack(11)
-	testAssert(t, q.Len() == 1)
-	testAssert(t, q.PopFront().(int) == 11)
-	testAssert(t, q.Len() == 0)
+	TestAssert(t, q.Len() == 1)
+	TestAssert(t, q.PopFront().(int) == 11)
+	TestAssert(t, q.Len() == 0)
 }
 
 func TestRandomized(t *testing.T) {
@@ -42,8 +42,8 @@ func TestRandomized(t *testing.T) {
 				count = last - first
 			}
 			for i := 0; i < count; i++ {
-				testAssert(t, q.Len() > 0, "len==0", q.Len())
-				testAssert(t, q.PopFront().(int) == first)
+				TestAssert(t, q.Len() > 0, "len==0", q.Len())
+				TestAssert(t, q.PopFront().(int) == first)
 				first++
 			}
 		}
